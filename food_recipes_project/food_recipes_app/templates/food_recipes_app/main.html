@@ -1,0 +1,30 @@
+{% extends 'food_recipes_app/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <div class="row">
+        {% for recipe in recipes %}
+            <div class="col-md-4 p-3">
+                <div class="card" style="width: 18rem;">
+                    {% if recipe.dish_img %}
+                        <img src="{{ MEDIA_URL }}{{ recipe.dish_img }}" class="img-thumbnail custom-image" alt="...">
+                    {% else %}
+                        <img src="/static/img/no_image_available.jpg" class="img-thumbnail custom-image" alt="...">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="{% url 'read_recipe' recipe.pk %}">Рецепт {{ recipe.name }}</a></h5>
+                        <p class="card-text">{{ recipe.description }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Автор: {{ recipe.author }}</li>
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}        
+        </div>
+    </div>
+    
+{% endblock %}

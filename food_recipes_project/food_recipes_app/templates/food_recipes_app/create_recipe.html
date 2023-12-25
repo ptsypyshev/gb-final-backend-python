@@ -1,0 +1,33 @@
+{% extends 'food_recipes_app/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h2>{{ title }}</h2>
+        <form method="post" enctype="multipart/form-data" class="col col-lg-4 col-md-8 col-sm-12">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            {{ formset.management_form }}
+            {{ formset.non_form_errors }}
+            {% for subform in formset %}
+                <div style="display: flex; gap: 20px">
+                {{ subform.as_div }}
+                </div>
+            {% endfor %}
+
+            <p>Если требуется более добавить больше ингридиентов, то сохраните и отредактируйте рецепт снова</p>
+
+            {% if create %}
+                <button type="submit" class="btn btn-secondary">Создать</button>
+                <button type="reset" class="btn btn-secondary">Сбросить</button>
+            {% else %}
+                <button type="submit" class="btn btn-secondary">Обновить</button>
+                <a href="{% url 'read_recipe' recipe_id %}" class="btn btn-secondary">Отмена</a>
+            {% endif %}
+            
+        </form>
+    </div>
+    
+{% endblock %}

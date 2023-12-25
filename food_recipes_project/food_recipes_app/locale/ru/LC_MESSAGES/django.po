@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-25 22:55+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\food_recipes_app\models.py:11
+msgid "Difficulty|easy"
+msgstr "Легко"
+
+#: .\food_recipes_app\models.py:12
+msgid "Difficulty|medium"
+msgstr "Средне"
+
+#: .\food_recipes_app\models.py:13
+msgid "Difficulty|hard"
+msgstr "Сложно"
+
+#: .\food_recipes_app\models.py:18
+msgid "Unit|name"
+msgstr "Наименование единицы измерения"
+
+#: .\food_recipes_app\models.py:19
+msgid "Unit|name_abbrev"
+msgstr "Аббревиатура единицы измерения"
+
+#: .\food_recipes_app\models.py:25 .\food_recipes_app\models.py:31
+msgid "Unit"
+msgstr "Единица измерения"
+
+#: .\food_recipes_app\models.py:26
+msgid "Units"
+msgstr "Единицы измерения"
+
+#: .\food_recipes_app\models.py:30
+msgid "Ingredient|name"
+msgstr "Наименование ингридиента"
+
+#: .\food_recipes_app\models.py:37 .\food_recipes_app\models.py:85
+#: .\food_recipes_app\models.py:89
+msgid "Ingredient"
+msgstr "Ингридиент"
+
+#: .\food_recipes_app\models.py:38 .\food_recipes_app\models.py:70
+#: .\food_recipes_app\models.py:90
+msgid "Ingredients"
+msgstr "Ингридиенты"
+
+#: .\food_recipes_app\models.py:43
+msgid "Category|name"
+msgstr "Наименование категории"
+
+#: .\food_recipes_app\models.py:44
+msgid "Category|description"
+msgstr "Описание категории"
+
+#: .\food_recipes_app\models.py:47 .\food_recipes_app\models.py:64
+msgid "Category"
+msgstr "Категория"
+
+#: .\food_recipes_app\models.py:48
+msgid "Categories"
+msgstr "Категории"
+
+#: .\food_recipes_app\models.py:62
+msgid "Recipe|name"
+msgstr "Название"
+
+#: .\food_recipes_app\models.py:63
+msgid "Recipe|description"
+msgstr "Описание"
+
+#: .\food_recipes_app\models.py:65
+msgid "Recipe|difficulty"
+msgstr "Сложность"
+
+#: .\food_recipes_app\models.py:66
+msgid "Recipe|cooking_steps"
+msgstr "Шаги приготовления"
+
+#: .\food_recipes_app\models.py:67
+msgid "Recipe|cooking_duration"
+msgstr "Время приготовления"
+
+#: .\food_recipes_app\models.py:68
+msgid "Recipe|dish_img"
+msgstr "Изображение"
+
+#: .\food_recipes_app\models.py:69
+msgid "Recipe|author"
+msgstr "Автор"
+
+#: .\food_recipes_app\models.py:75
+msgid "Recipe"
+msgstr "Рецепт"
+
+#: .\food_recipes_app\models.py:76
+msgid "Recipes"
+msgstr "Рецепты"
+
+#: .\food_recipes_app\models.py:86
+msgid "Quantity"
+msgstr "Количество"
+
+#: .\food_recipes_app\views.py:13
+msgid "Hello at simple recipes web application!"
+msgstr "Добро пожаловать на сайт с рецептами"
+
+#: .\food_recipes_app\views.py:14
+msgid "Create recipe"
+msgstr "Создание рецепта"
+
+#: .\food_recipes_app\views.py:15
+msgid "Edit recipe"
+msgstr "Редактирование рецепта"
+
+#: .\food_recipes_app\views.py:16
+msgid "Access forbidden!"
+msgstr "Доступ запрещен!"
+
+#: .\food_recipes_app\views.py:17
+msgid "Recipe not found..."
+msgstr "Рецепт не найден"

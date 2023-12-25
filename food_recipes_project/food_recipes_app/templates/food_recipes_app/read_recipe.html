@@ -1,0 +1,59 @@
+{% extends 'food_recipes_app/base.html' %}
+
+{% block title %}Рецепт - {{ recipe.name }}{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-11">
+            <h1>Рецепт "{{ recipe.name }}"</h1>
+            </div>
+            {% if user.is_authenticated and user == recipe.author %}            
+            <div class="col-md-1">
+                <a href="{% url 'edit_recipe' recipe.pk %}" class="btn btn-secondary">Редактировать</a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {% if recipe.dish_img %}
+                    <img src="{{ MEDIA_URL }}{{ recipe.dish_img }}" class="card-img-top" alt="...">
+                {% else %}
+                    <img src="/static/img/no_image_available.jpg" class="card-img-top" alt="...">
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h3>Категория: {{ recipe.category }}</h3>
+                <h3>Сложность: {{ recipe.difficulty }}</h3>
+                <h3>Ингридиенты:</h3>
+                <ul>
+                    {% for ingredient in ingredients %}
+                        <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }} {{ ingredient.ingredient.measure_unit.name_abbrev }}</li>
+                    {% endfor %}
+                </ul>
+                <h3>Длительность приготовления: {{ duration_formatted }}</h3>
+                <h3>Автор: {{ recipe.author }}</h3>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <h3>Description:</h3>
+                <p>{{ recipe.description }}</p>
+                <h3>Steps:</h3>
+                <p>{{ recipe.cooking_steps }}</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                {% if previous_recipe_id %}
+                    <a href="{% url 'read_recipe' previous_recipe_id %}">Предыдущий</a>
+                {% endif %}
+                {% if next_recipe_id %}
+                    <a href="{% url 'read_recipe' next_recipe_id %}">Следующий</a>
+                {% endif %}
+                </p>
+                <p>На <a href="{% url 'main' %}">главную</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
