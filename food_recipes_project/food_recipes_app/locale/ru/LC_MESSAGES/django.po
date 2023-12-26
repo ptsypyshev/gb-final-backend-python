@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-25 22:55+0500\n"
+"POT-Creation-Date: 2023-12-26 11:35+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgid "Ingredient"
 msgstr "Ингридиент"
 
 #: .\food_recipes_app\models.py:38 .\food_recipes_app\models.py:70
-#: .\food_recipes_app\models.py:90
+#: .\food_recipes_app\models.py:90 .\food_recipes_app\views.py:19
 msgid "Ingredients"
 msgstr "Ингридиенты"
 
@@ -74,7 +74,7 @@ msgstr "Описание категории"
 msgid "Category"
 msgstr "Категория"
 
-#: .\food_recipes_app\models.py:48
+#: .\food_recipes_app\models.py:48 .\food_recipes_app\views.py:18
 msgid "Categories"
 msgstr "Категории"
 
@@ -137,3 +137,11 @@ msgstr "Доступ запрещен!"
 #: .\food_recipes_app\views.py:17
 msgid "Recipe not found..."
 msgstr "Рецепт не найден"
+
+#: .\food_recipes_app\views.py:20
+msgid "Frequently Asked Questions"
+msgstr "ЧАВО (Часто задаваемые вопросы)"
+
+#: .\food_recipes_app\views.py:21
+msgid "Search results:"
+msgstr "Результаты поиска:"

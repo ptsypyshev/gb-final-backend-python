@@ -9,6 +9,7 @@
             {% csrf_token %}
             {{ form.as_div }}
 
+            <div class="mt-1">
             {% if create %}
                 <button type="submit" class="btn btn-secondary">Зарегистрироваться</button>
                 <button type="reset" class="btn btn-secondary">Очистить форму</button>
@@ -16,6 +17,7 @@
                 <button type="submit" class="btn btn-secondary">Обновить</button>
                 <a href="{% url 'main' %}" class="btn btn-secondary">Отмена</a>
             {% endif %}
+            </div>
             
         </form>
     </div>

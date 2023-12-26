@@ -1,0 +1,15 @@
+{% extends 'food_recipes_app/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        {% for ingredient in ingredients %}
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ ingredient.name }} - {{ ingredient.measure_unit.name }} ({{ ingredient.measure_unit.name_abbrev }})</li>
+        </ul>        
+        {% endfor %}
+    </div>
+    
+{% endblock %}

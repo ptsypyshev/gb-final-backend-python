@@ -1,0 +1,17 @@
+{% extends 'food_recipes_app/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ title }}</h1>
+        {% for idx, recipe in result %}
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <a href="{% url 'read_recipe' recipe.pk %}">{{ idx }}. {{ recipe.name }}</a>
+            </li>
+        </ul>        
+        {% endfor %}
+    </div>
+    
+{% endblock %}

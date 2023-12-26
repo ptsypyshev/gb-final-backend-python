@@ -7,7 +7,7 @@ from django.forms import inlineformset_factory
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegistrationForm, LoginForm, RecipeForm, RecipeIngredientForm
-from .models import Recipe, RecipeIngredient
+from .models import Recipe, RecipeIngredient, Category, Ingredient
 
 MAX_RECIPES_AT_MAIN_PAGE = 6
 MAIN_TITLE = _('Hello at simple recipes web application!')
@@ -15,6 +15,10 @@ CREATE_RECIPE_TITLE = _('Create recipe')
 EDIT_RECIPE_TITLE = _('Edit recipe')
 ACCESS_FORBIDDEN_MSG = _('Access forbidden!')
 RECIPE_NOT_FOUND_MSG = _('Recipe not found...')
+CATEGORIES_TITLE = _('Categories')
+INGREDIENTS_TITLE = _('Ingredients')
+FAQ_TITLE = _('Frequently Asked Questions')
+SEARCH_TITLE = _('Search results:')
 
 # Create your views here.
 class Main(View):
@@ -35,6 +39,14 @@ class About(View):
             'repo': 'https://github.com/ptsypyshev/gb-final-backend-python',
         }
         return render(request, 'food_recipes_app/about.html', context=context)
+
+
+class Faq(View):
+    def get(self, request):
+        context = {
+            'title': FAQ_TITLE,
+        }
+        return render(request, 'food_recipes_app/faq.html', context=context)
 
 
 class Register(View):
@@ -78,6 +90,45 @@ class Logout(View):
         if request.user.is_authenticated:
             logout(request)
             return redirect('main')
+
+
+class IngredientsView(View):
+    def get(self, request):
+        ingredients = Ingredient.objects.all()
+        print(ingredients)
+
+        context = {
+            'title': INGREDIENTS_TITLE,
+            'ingredients': ingredients,
+        }
+        return render(request, 'food_recipes_app/ingredients.html', context=context)
+
+
+class Categories(View):
+    def get(self, request):
+        categories = Category.objects.all()
+        cat_dict = {}
+        for category in categories:
+            recipes = Recipe.objects.filter(category=category)
+            cat_dict[category] = recipes
+        
+        context = {
+            'title': CATEGORIES_TITLE,
+            'cat_dict': cat_dict,
+        }
+        return render(request, 'food_recipes_app/categories.html', context=context)
+
+
+class CategoryView(View):
+    def get(self, request, category_id):
+        category = Category.objects.get(pk=category_id)
+        recipes = Recipe.objects.filter(category=category)
+
+        context = {
+            'title': category,
+            'recipes': recipes
+        }
+        return render(request, 'food_recipes_app/main.html', context=context)
 
 
 class ReadRecipe(View):
@@ -219,6 +270,40 @@ class UpdateRecipe(View):
             'recipe_id': recipe_id
         }
         return render(request, 'food_recipes_app/create_recipe.html', context=context)
+
+
+class Search(View):
+    def get(self, request):
+        return redirect('main')
+    
+    def post(self, request):
+        search_str = request.POST.get('search_str')
+        if not search_str:
+            return redirect('main')
+        
+        result = {}
+        tokens = search_str.split(' ')
+
+        recipes = Recipe.objects.all()
+
+        # Bad algo but it works for small datasets
+        for recipe in recipes:
+            for token in tokens:
+                print(recipe, token)
+                if token in recipe.name:
+                    result[recipe] = result.get(recipe, 0) + 1
+                if token in recipe.description:
+                    result[recipe] = result.get(recipe, 0) + 1
+                if token in recipe.cooking_steps:
+                    result[recipe] = result.get(recipe, 0) + 1
+        
+        sorted_result = sorted(result, key=result.get, reverse=True)
+
+        context = {
+            'title': SEARCH_TITLE,
+            'result': enumerate(sorted_result),
+        }
+        return render(request, 'food_recipes_app/search.html', context=context)
 
 
 def save_img(image):
