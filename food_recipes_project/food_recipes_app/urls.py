@@ -1,10 +1,11 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import Main, Register, Login, Logout, CreateRecipe, UpdateRecipe, ReadRecipe
+from .views import Main, About, Register, Login, Logout, CreateRecipe, UpdateRecipe, ReadRecipe
 
 urlpatterns = [
-    path('', Main.as_view(), name='main'),
+    path('', Main.as_view(), name='main'),    
+    path('About/', About.as_view(), name='about'),
     path('login/', Login.as_view(), name='login'),
     path('logout/', Logout.as_view(), name='logout'),
     path('registration/', Register.as_view(), name='register'),

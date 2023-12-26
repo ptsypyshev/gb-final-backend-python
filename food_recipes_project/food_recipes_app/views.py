@@ -28,6 +28,15 @@ class Main(View):
         return render(request, 'food_recipes_app/main.html', context=context)
 
 
+class About(View):
+    def get(self, request):
+        context = {
+            'title': MAIN_TITLE,
+            'repo': 'https://github.com/ptsypyshev/gb-final-backend-python',
+        }
+        return render(request, 'food_recipes_app/about.html', context=context)
+
+
 class Register(View):
     def get(self, request):
         form = RegistrationForm()
