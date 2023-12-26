@@ -16,7 +16,7 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title"><a href="{% url 'read_recipe' recipe.pk %}">Рецепт {{ recipe.name }}</a></h5>
-                        <p class="card-text">{{ recipe.description }}</p>
+                        <p class="card-text">{{ recipe.description|truncatechars:50 }}</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">Автор: {{ recipe.author }}</li>
